@@ -34,3 +34,10 @@ spring:
           initial-interval: 30000ms
         default-requeue-rejected: false
         prefetch: 1
+
+logging:
+  config: classpath:log4j2-spring.xml
+  level:
+    root: trace
+  file:
+    path: classpath:logs
