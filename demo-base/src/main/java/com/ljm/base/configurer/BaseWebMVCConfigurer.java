@@ -1,18 +1,19 @@
 package com.ljm.base.configurer;
 
-import com.esotericsoftware.minlog.Log;
 import com.ljm.base.fifter.MyHttpServletFilter;
 import com.ljm.base.interceptor.SignatureHandleInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.annotation.Resource;
-
 @Configuration
 public class BaseWebMVCConfigurer implements WebMvcConfigurer {
+
+    private static final Logger log = LoggerFactory.getLogger(BaseWebMVCConfigurer.class);
 
     /*@Resource
     private MyHttpServletFilter myHttpServletFilter;*/
@@ -26,7 +27,7 @@ public class BaseWebMVCConfigurer implements WebMvcConfigurer {
     @Bean
     public FilterRegistrationBean registerFilter() {
 //        System.out.println("BaseWebMVCConfigurer registerFilter");
-        Log.debug("BaseWebMVCConfigurer registerFilter");
+        log.debug("BaseWebMVCConfigurer registerFilter");
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new MyHttpServletFilter());
         registration.addUrlPatterns("/*");

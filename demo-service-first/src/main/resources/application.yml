@@ -17,7 +17,7 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
     group: demo
   protocol:
-    name: dubbo
+    name: tri
     port: 29001
   scan:
     base-packages: com.ljm.service

@@ -1,25 +1,19 @@
 package com.ljm;
 
-import com.esotericsoftware.minlog.Log;
 import com.ljm.base.listener.MyApplicationStartedEventListener;
 import com.ljm.base.listener.MyMyApplicationEventListener;
-import com.ljm.base.utils.AppContextUtil;
 import lombok.extern.slf4j.Slf4j;
-import net.bytebuddy.asm.Advice;
 import org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * 应用启动类
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,DubboAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @Slf4j
 @EnableAspectJAutoProxy(proxyTargetClass=true)
 public class FirstApplication {

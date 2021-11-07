@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>demo-base</artifactId>
 
+    <!-- 统一配置下属性 -->
+    <properties>
+            <dubbo.version>3.0.4</dubbo.version>
+    </properties>
+
     <!-- 集成dubbo -->
     <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
     <dependencies>
@@ -46,18 +51,21 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- dubbo相关 -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>2.7.3</version>
+            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-metadata-report-zookeeper</artifactId>
-            <version>2.7.3</version>
+            <artifactId>dubbo-dependencies-zookeeper</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.101tec/zkclient -->
-        <dependency>
+
+
+
+        <!--<dependency>
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.7</version>
@@ -67,7 +75,7 @@
                     <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
         <dependency>
