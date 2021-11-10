@@ -3,7 +3,6 @@ package com.ljm;
 import com.ljm.base.listener.MyApplicationStartedEventListener;
 import com.ljm.base.listener.MyMyApplicationEventListener;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;

@@ -20,7 +20,7 @@ dubbo:
     name: tri
     port: 29001
   scan:
-    base-packages: com.ljm.service
+    base-packages: com.ljm
   provider:
     timeout: 1000
   config-center:
