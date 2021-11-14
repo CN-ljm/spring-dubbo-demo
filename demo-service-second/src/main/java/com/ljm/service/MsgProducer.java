@@ -1,3 +1,4 @@
+/*
 package com.ljm.service;
 
 import com.ljm.dto.MessageVo;
@@ -14,16 +15,20 @@ import java.time.format.FormatStyle;
 import java.util.HashMap;
 import java.util.Map;
 
+*/
 /**
  * @author Created by liangjiaming on 2021/1/6
  * @title
  * @Desc
- */
+ *//*
+
 @Service
 public class MsgProducer {
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    */
+/*@Autowired
+    private RabbitTemplate rabbitTemplate;*//*
+
 
     public void sendMsg(String msg) throws UnsupportedEncodingException {
 
@@ -35,7 +40,8 @@ public class MsgProducer {
         map.put("id",System.currentTimeMillis());
         map.put("name", "Jackson序列化消息Map");
 
-        rabbitTemplate.convertAndSend("direct.test","test.key", map);
+//        rabbitTemplate.convertAndSend("direct.test","test.key", map);
     }
 
 }
+*/

@@ -1,5 +1,6 @@
 package com.ljm.config.swagger;
 
+import com.ljm.controller.web1.Hello;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -18,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    public static final String SWAGGER_SCAN_BASE_PACKAGE = "com.ljm.com.controller";
+    public static final String SWAGGER_SCAN_BASE_PACKAGE = "com.ljm.controller";
     public static final String VERSION = "1.0.0";
 
     @Bean
@@ -38,7 +39,7 @@ public class SwaggerConfig {
                 .description("更多内容请关注：http://www.ljm.com")//设置文档的描述->1.Overview
                 .version(VERSION)//设置文档的版本信息-> 1.1 Version information
                 .contact("http://www.ljm.comt")//设置文档的联系方式->1.2 Contact information
-                .termsOfServiceUrl("www.ljm..com")//设置文档的License信息->1.3 License information
+                .termsOfServiceUrl("www.ljm.com")//设置文档的License信息->1.3 License information
                 .build();
     }
 

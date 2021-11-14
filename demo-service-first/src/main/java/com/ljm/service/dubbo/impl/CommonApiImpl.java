@@ -4,7 +4,7 @@ import com.ljm.api.CommonApi;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
 
-@DubboService(interfaceName = "com.ljm.api.CommonApi", group = "Common", version = "0.0.1", weight = 100, timeout = 1000)
+@DubboService
 public class CommonApiImpl implements CommonApi {
 
     @Override

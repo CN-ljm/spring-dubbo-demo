@@ -5,14 +5,17 @@ dubbo:
   application:
     name: demo-service-dubbo
   registry:
-    register: false
+    register: true
     id: zk_2181
     address: zookeeper://127.0.0.1:2181
     group: demo
   consumer:
     check: false
   scan:
-    base-packages: com.ljm.aaa
+    base-packages: com.ljm
+  protocol:
+    name: tri
+    port: 29002
 spring:
   http:
     encoding:
@@ -20,20 +23,20 @@ spring:
       charset: UTF-8
       force: true
 
-  rabbitmq:
-    host: 0.0.0.0
-    port: 5672
-    virtual-host: test
-    username: admin
-    password: admin
-    listener:
-      simple:
-        retry:
-          enabled: true
-          max-attempts: 1
-          initial-interval: 30000ms
-        default-requeue-rejected: false
-        prefetch: 1
+#  rabbitmq:
+#    host: 0.0.0.0
+#    port: 5672
+#    virtual-host: test
+#    username: admin
+#    password: admin
+#    listener:
+#      simple:
+#        retry:
+#          enabled: true
+#          max-attempts: 1
+#          initial-interval: 30000ms
+#        default-requeue-rejected: false
+#        prefetch: 1
 
 logging:
   config: classpath:log4j2-spring.xml

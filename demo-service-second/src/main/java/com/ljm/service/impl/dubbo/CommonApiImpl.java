@@ -1,3 +1,4 @@
+/*
 package com.ljm.service.impl.dubbo;
 
 import com.ljm.api.CommonApi;
@@ -11,3 +12,4 @@ public class CommonApiImpl implements CommonApi {
         return 2222L;
     }
 }
+*/

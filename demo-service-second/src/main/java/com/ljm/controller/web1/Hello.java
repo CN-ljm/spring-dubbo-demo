@@ -2,17 +2,10 @@ package com.ljm.controller.web1;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ljm.service.CustomerCommonService;
-import com.ljm.service.MsgProducer;
-import com.ljm.service.RabbitMQMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,18 +20,17 @@ public class Hello {
     @Autowired
     private CustomerCommonService service;
 
-    @Autowired
-    private MsgProducer producer;
+    /*@Autowired
+    private MsgProducer producer;*/
 
-    @Autowired
-    private RabbitMQMessageService messageService;
+    /*@Autowired
+    private RabbitMQMessageService messageService;*/
 
     @ApiOperation("测试swagger")
     @GetMapping("/sayHello")
-    public String sayHello(){
-//        long customerNo = service.getCustomerNoByNames("world!");
-//        return String.valueOf(customerNo);
-        return "hello";
+    public String sayHello(String content){
+        long customerNo = service.getCustomerNoByNames(content);
+        return String.valueOf(customerNo);
     }
 
     @ApiOperation("测试swagger")
@@ -58,7 +50,7 @@ public class Hello {
         return JSONObject.toJSONString(map);
     }
 
-    @ApiOperation("发送消息")
+    /*@ApiOperation("发送消息")
     @GetMapping("/sendMsg")
     public void sendMsg() throws UnsupportedEncodingException {
         String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS"));
@@ -75,6 +67,6 @@ public class Hello {
     @GetMapping("/reQueue")
     public void reQueue() throws IOException {
         messageService.reQueue();
-    }
+    }*/
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.ljm.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,20 +15,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * @author Created by liangjiaming on 2021/1/6
  * @title
  * @Desc
- */
+ *//*
+
 @Service
 @Slf4j
 public class RabbitMQMessageService {
 
-    /*@Autowired
+    */
+/*@Autowired
     private RabbitAdmin rabbitAdmin;
 
     @Autowired
-    private SimpleMessageListenerContainer messageListenerContainer;*/
+    private SimpleMessageListenerContainer messageListenerContainer;*//*
+
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -47,8 +52,10 @@ public class RabbitMQMessageService {
             responseList.add(response);
             response = channel.basicGet("deadLetter.test", false);
         }
-        /*MessageProperties mp = new MessageProperties();
-        rabbitTemplate.getMessageConverter().fromMessage()*/
+        */
+/*MessageProperties mp = new MessageProperties();
+        rabbitTemplate.getMessageConverter().fromMessage()*//*
+
 
         // 每次消费第二条消息
         GetResponse targetRes = responseList.get(1);
@@ -66,3 +73,4 @@ public class RabbitMQMessageService {
 
     }
 }
+*/
