@@ -14,7 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 /**
  * 应用启动类
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, RabbitAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SecondApplication {
 
     public static void main(String[] args) {

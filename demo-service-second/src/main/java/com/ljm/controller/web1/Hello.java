@@ -2,6 +2,8 @@ package com.ljm.controller.web1;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ljm.service.CustomerCommonService;
+import com.ljm.service.MsgProducer;
+import com.ljm.service.RabbitMQMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,11 @@ public class Hello {
     @Autowired
     private CustomerCommonService service;
 
-    /*@Autowired
-    private MsgProducer producer;*/
+    @Autowired
+    private MsgProducer producer;
 
-    /*@Autowired
-    private RabbitMQMessageService messageService;*/
+    @Autowired
+    private RabbitMQMessageService messageService;
 
     @ApiOperation("测试swagger")
     @GetMapping("/sayHello")

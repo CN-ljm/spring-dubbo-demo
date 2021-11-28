@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerCommonService {
 
-    /*@Reference(group = "Common", version = "0.0.2")
-    private CommonApi commonApi;*/
-
     @DubboReference
     private CommonApi commonApi;
 

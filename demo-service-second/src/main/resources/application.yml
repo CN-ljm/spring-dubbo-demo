@@ -7,7 +7,7 @@ dubbo:
   registry:
     register: true
     id: zk_2181
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://1.12.241.116:2181
     group: demo
   consumer:
     check: false
@@ -23,20 +23,20 @@ spring:
       charset: UTF-8
       force: true
 
-#  rabbitmq:
-#    host: 0.0.0.0
-#    port: 5672
-#    virtual-host: test
-#    username: admin
-#    password: admin
-#    listener:
-#      simple:
-#        retry:
-#          enabled: true
-#          max-attempts: 1
-#          initial-interval: 30000ms
-#        default-requeue-rejected: false
-#        prefetch: 1
+  rabbitmq:
+    host: 1.12.241.116
+    port: 5672
+    virtual-host: test
+    username: admin
+    password: 123456
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 1
+          initial-interval: 30000ms
+        default-requeue-rejected: false
+        prefetch: 1
 
 logging:
   config: classpath:log4j2-spring.xml

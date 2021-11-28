@@ -14,7 +14,7 @@ dubbo:
   application:
     name: demo-service-dubbo
   registry:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://1.12.241.116:2181
     group: demo
   protocol:
     name: tri
@@ -24,7 +24,7 @@ dubbo:
   provider:
     timeout: 1000
   config-center:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://1.12.241.116:2181
   metadata-report:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://1.12.241.116:2181
 

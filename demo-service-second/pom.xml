@@ -13,10 +13,6 @@
     <dependencies>
         <dependency>
             <groupId>com.ljm.learn</groupId>
-            <artifactId>demo-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ljm.learn</groupId>
             <artifactId>demo-base</artifactId>
         </dependency>
 

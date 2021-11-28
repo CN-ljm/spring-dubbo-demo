@@ -1,4 +1,3 @@
-/*
 package com.ljm.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,8 +5,11 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.GetResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.connection.Connection;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,23 +17,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-*/
-/**
+/*
  * @author Created by liangjiaming on 2021/1/6
  * @title
  * @Desc
- *//*
+ */
 
 @Service
 @Slf4j
 public class RabbitMQMessageService {
 
-    */
-/*@Autowired
+    /*@Autowired
     private RabbitAdmin rabbitAdmin;
 
     @Autowired
-    private SimpleMessageListenerContainer messageListenerContainer;*//*
+    private SimpleMessageListenerContainer messageListenerContainer;*/
 
 
     @Autowired
@@ -52,9 +52,6 @@ public class RabbitMQMessageService {
             responseList.add(response);
             response = channel.basicGet("deadLetter.test", false);
         }
-        */
-/*MessageProperties mp = new MessageProperties();
-        rabbitTemplate.getMessageConverter().fromMessage()*//*
 
 
         // 每次消费第二条消息
@@ -73,4 +70,3 @@ public class RabbitMQMessageService {
 
     }
 }
-*/
