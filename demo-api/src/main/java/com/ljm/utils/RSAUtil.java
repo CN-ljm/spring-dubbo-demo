@@ -147,7 +147,7 @@ public class RSAUtil {
         return keyFactory;
     }
 
-    public static void main(String[] args) throws Exception {
+    /*public static void main(String[] args) throws Exception {
         List<String> keyPair = genBase64PriKeyAndPubKey(2048);
         String priKey = keyPair.get(0);
         String pubKey = keyPair.get(1);
@@ -158,6 +158,6 @@ public class RSAUtil {
         System.out.println("signStr:" + signStr);
         boolean verify = verify("addag您好，签名", Charset.forName("UTF-8"), signStr, pubKey, null);
         System.out.println("verify:" + verify);
-    }
+    }*/
 
 }

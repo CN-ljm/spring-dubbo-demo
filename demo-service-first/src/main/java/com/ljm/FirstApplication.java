@@ -2,7 +2,6 @@ package com.ljm;
 
 import com.ljm.base.listener.MyApplicationStartedEventListener;
 import com.ljm.base.listener.MyMyApplicationEventListener;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * 应用启动类
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@Slf4j
 @EnableAspectJAutoProxy(proxyTargetClass=true)
 public class FirstApplication {
 
@@ -26,7 +24,5 @@ public class FirstApplication {
         /*ExitCodeGenerator bean = AppContextUtil.getBean(ExitCodeGenerator.class);
         int exit = SpringApplication.exit(applicationContext, bean);
         System.out.println(exit);*/
-
-        log.info("哈哈哈");
     }
 }

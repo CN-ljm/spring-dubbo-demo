@@ -134,7 +134,7 @@ public class HttpClientUtil {
         return httpClient;
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    /*public static void main(String[] args) throws IOException, URISyntaxException {
         String getUrl = "http://127.0.0.1:8082/test/getText";
         Map<String, String> params = new HashMap<>();
         params.put("username", "123456@sz.com");
@@ -146,6 +146,6 @@ public class HttpClientUtil {
 
         String postRes = doPost(postUrl, null, null, "post context");
         System.out.println(postRes);
-    }
+    }*/
 
 }
