@@ -1,13 +1,17 @@
 package com.ljm.controller.web1;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ljm.pojo.Person;
 import com.ljm.service.CustomerCommonService;
 import com.ljm.service.MsgProducer;
+import com.ljm.service.PersonService;
 import com.ljm.service.RabbitMQMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +31,9 @@ public class Hello {
 
     @Autowired
     private RabbitMQMessageService messageService;
+
+    @Autowired
+    private PersonService personService;
 
     @ApiOperation("测试swagger")
     @GetMapping("/sayHello")
@@ -50,6 +57,19 @@ public class Hello {
         map.put("name", "张三");
         map.put("age", 22);
         return JSONObject.toJSONString(map);
+    }
+
+    @ApiOperation("测试数据库插入")
+    @PostMapping("/testDBInsert")
+    public String testDBInsert() {
+        Person person = new Person();
+        person.setName("李四");
+        person.setIdCard("450481199102131567");
+        person.setCellphone("18820211211");
+        person.setBirthDate(LocalDate.now());
+        person.setAddress("深圳市宝安区西乡社区");
+        personService.save(person);
+        return "success";
     }
 
     /*@ApiOperation("发送消息")
