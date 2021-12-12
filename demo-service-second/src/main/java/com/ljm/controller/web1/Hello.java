@@ -1,6 +1,7 @@
 package com.ljm.controller.web1;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ljm.game.CSVService;
 import com.ljm.pojo.Person;
 import com.ljm.service.CustomerCommonService;
 import com.ljm.service.MsgProducer;
@@ -35,6 +36,9 @@ public class Hello {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private CSVService csvService;
+
     @ApiOperation("测试swagger")
     @GetMapping("/sayHello")
     public String sayHello(String content){
@@ -61,14 +65,10 @@ public class Hello {
 
     @ApiOperation("测试数据库插入")
     @PostMapping("/testDBInsert")
-    public String testDBInsert() {
-        Person person = new Person();
-        person.setName("李四");
-        person.setIdCard("450481199102131567");
-        person.setCellphone("18820211211");
-        person.setBirthDate(LocalDate.now());
-        person.setAddress("深圳市宝安区西乡社区");
-        personService.save(person);
+    public String testDBInsert(@RequestParam String csvFilePath, @RequestParam int singleCount, @RequestParam int tableCount) {
+
+        csvService.dealWithCSVFile(csvFilePath, singleCount, tableCount);
+
         return "success";
     }
 
