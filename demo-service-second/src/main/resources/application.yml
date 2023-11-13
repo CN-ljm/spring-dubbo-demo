@@ -9,6 +9,7 @@ dubbo:
     id: zk_2181
     address: zookeeper://1.12.241.116:2181
     group: demo
+    timeout: 10000
   consumer:
     check: false
   scan:
