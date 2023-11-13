@@ -2,7 +2,6 @@ package com.ljm.controller.web1;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ljm.game.CSVService;
-import com.ljm.pojo.Person;
 import com.ljm.service.CustomerCommonService;
 import com.ljm.service.MsgProducer;
 import com.ljm.service.PersonService;
@@ -11,8 +10,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
