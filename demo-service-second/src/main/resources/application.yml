@@ -1,6 +1,6 @@
 debug: true
 server:
-  port: 8082
+  port: 80
 dubbo:
   application:
     name: demo-service-dubbo
@@ -51,3 +51,4 @@ logging:
     root: trace
   file:
     path: classpath:logs
+
