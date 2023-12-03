@@ -52,3 +52,7 @@ logging:
   file:
     path: classpath:logs
 
+#wx:
+#  auth:
+#    token: 123456
+

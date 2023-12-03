@@ -2,6 +2,7 @@ package com.ljm.controller.wechat;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ import java.util.*;
 @Slf4j
 public class OfficialAccountsController {
 
+    @Value("${wx.auth.token:123456}")
+    private String authToken;
+
     /**
      * 微信服务器认证 token=ljm123456
      * @param request
@@ -38,23 +42,23 @@ public class OfficialAccountsController {
         String nonce = request.getParameter("nonce");
         String echostr = request.getParameter("echostr");
         log.debug("timestamp:{},nonce:{},echostr:{},signature:{}", timestamp, nonce, echostr, signature);
-        Set<String> sortSet = new HashSet<>();
+        Set<String> sortSet = new TreeSet<>();
         sortSet.add(timestamp);
         sortSet.add(nonce);
-        sortSet.add(echostr);
+        sortSet.add(authToken);
         StringJoiner joiner = new StringJoiner("");
         sortSet.forEach(s -> joiner.add(s));
+        String resStr = "";
         // 计算签名
         String signStr = getShaString(joiner.toString());
+        log.info("计算的签名结果：{}", signStr);
         if (signature.equals(signStr) ) {
             log.info("验签成功！");
-        } else {
-            log.info("验签不通过！");
+            resStr = echostr;
         }
-        String resStr = echostr;
         PrintWriter writer = null;
         try {
-            response.getWriter();
+            writer = response.getWriter();
             writer.write(resStr);
             writer.flush();
         } catch (IOException e) {
@@ -90,7 +94,7 @@ public class OfficialAccountsController {
             // 二进制转16进制
             return Hex.encodeHexString(digest);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.error("哈希签名计算失败：{}", e.getMessage(), e);
         }
 
         return null;
