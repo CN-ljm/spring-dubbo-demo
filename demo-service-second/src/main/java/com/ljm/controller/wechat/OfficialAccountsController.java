@@ -1,8 +1,8 @@
 package com.ljm.controller.wechat;
 
+import com.ljm.service.WxFrontService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.binary.Hex;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,22 +12,19 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
 
 /**
  * @author Created by liangjiaming on 2023/6/28
- * @title
+ * @title 微信前端服务器，对接微信推送消息
  * @Desc
  */
 @RestController
-@RequestMapping("wx/")
+@RequestMapping("/wx")
 @Slf4j
 public class OfficialAccountsController {
 
-    @Value("${wx.auth.token:123456}")
-    private String authToken;
+    @Autowired
+    private WxFrontService wxService;
 
     /**
      * 微信服务器认证 token=ljm123456
@@ -40,22 +37,9 @@ public class OfficialAccountsController {
         String signature = request.getParameter("signature");
         String timestamp = request.getParameter("timestamp");
         String nonce = request.getParameter("nonce");
-        String echostr = request.getParameter("echostr");
-        log.debug("timestamp:{},nonce:{},echostr:{},signature:{}", timestamp, nonce, echostr, signature);
-        Set<String> sortSet = new TreeSet<>();
-        sortSet.add(timestamp);
-        sortSet.add(nonce);
-        sortSet.add(authToken);
-        StringJoiner joiner = new StringJoiner("");
-        sortSet.forEach(s -> joiner.add(s));
-        String resStr = "";
-        // 计算签名
-        String signStr = getShaString(joiner.toString());
-        log.info("计算的签名结果：{}", signStr);
-        if (signature.equals(signStr) ) {
-            log.info("验签成功！");
-            resStr = echostr;
-        }
+        String echoStr = request.getParameter("echostr");
+        log.debug("timestamp:{},nonce:{},echostr:{},signature:{}", timestamp, nonce, echoStr, signature);
+        String resStr = wxService.authService(timestamp, nonce, echoStr, signature);
         PrintWriter writer = null;
         try {
             writer = response.getWriter();
@@ -80,24 +64,6 @@ public class OfficialAccountsController {
                 " <MsgType><![CDATA[text]]></MsgType>\n" +
                 " <Content><![CDATA[hello!]]></Content>\n" +
                 "</xml>";
-    }
-
-    /**
-     * sha1哈希计算
-     * @return
-     */
-    private String getShaString(String str) {
-        MessageDigest sha = null;
-        try {
-            sha = MessageDigest.getInstance("SHA");
-            byte[] digest = sha.digest(str.getBytes());
-            // 二进制转16进制
-            return Hex.encodeHexString(digest);
-        } catch (NoSuchAlgorithmException e) {
-            log.error("哈希签名计算失败：{}", e.getMessage(), e);
-        }
-
-        return null;
     }
 
 }
